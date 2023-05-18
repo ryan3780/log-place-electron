@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+### <div align=center> 일렌트론 실행 파일 다운로드 주소 : https://drive.google.com/drive/folders/1Ox0BYpOlEXaIIx6aAbH0lHZLzmNSstEX?usp=sharing </div>
+---
+## 다운 및 실행 방법
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="./down.jpg" alt="" />
 
-## Available Scripts
+1. 다운 로드 주소를 클릭
+2. dist.zip 압축 해제 
+3. 터미널을 열고 압축 해제 한 디렉토리로 이동
+4. xattr -cr `압축 해제 된 디렉토리 경로`
+5. mac-arm64 디렉토리 안에 있는 `log-place` 실행
 
-In the project directory, you can run:
+## 목적
+- GraphQL과 일렉트론을 공부하려고 제작했습니다.
 
-### `yarn start`
+## 기획 및 진행 과정
+- 오프라인 상에서도 사진과 찍은 날짜, 위치 그리고 기록할 문장을 담는 프로그램을 기획 했습니다.
+- 로컬 파일인 `.json` 파일을 읽고, 수정하는 것(`node의 fs`)이 필요하여 `craco` 라이브러리를 사용했습니다.
+- 웹페이지로 먼저 제작하고 이후에 graphql 부분을 `fs`로 변경하였습니다. 이 과정에서 웹페이지 형식에서는 사진 크기가 제한이 있었지만, 일렉트론 앱에서는 제한을 없앴습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 소개 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 방문한 숙소를 찍은 사진과 그 당시 느낀 감정을 한 줄로 작성하고, 업로드한 사진에 날짜와 위치정보가 있으면 자동으로 날짜와 구글맵으로 표기합니다. 오픈라인 상에서 일렉트론을 활용하여 추억을 남기기 위한 프로그램을 제작했습니다.
 
-### `yarn test`
+## 이용한 도구
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/> <img src="./src/assets/craco.png" width="50px"/> <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
+<img src="https://img.shields.io/badge/electron-47848F?style=for-the-badge&logo=electron&logoColor=white"/>
+<img src="https://img.shields.io/badge/electronbuilder-FFFFFF?style=for-the-badge&logo=electronbuilder&logoColor=black"/>
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+ 

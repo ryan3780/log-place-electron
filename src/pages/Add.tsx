@@ -210,10 +210,10 @@ const Add = (edit: editProps) => {
       };
     });
 
-    if (String(res).length > 100000) {
+    // if (String(res).length > 100000) {
 
-      return alertHandler(String(res).length)
-    }
+    //   return alertHandler(String(res).length)
+    // }
 
     setPreview(String(res));
   }

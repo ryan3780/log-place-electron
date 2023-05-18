@@ -79,7 +79,8 @@
     "mac": {
       "target": [
         "default"
-      ]
+      ],
+      "icon": "./src/assets/icons/log-place-icon.png"
     },
     "dmg": {
       "title": "log-place"
@@ -105,8 +106,7 @@
       "build/**/*",
       "node_modules/**/*",
       "src/**/*",
-      "public/**/*",
-      "*"
+      "public/**/*"
     ],
     "directories": {
       "output": "dist"

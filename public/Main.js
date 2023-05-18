@@ -17,6 +17,7 @@ function createWindow() {
       enableRemoteModule: true,
 
     },
+    icon: path.join(__dirname, 'assets/icons/log-place-icon.png')
   });
 
   /*
