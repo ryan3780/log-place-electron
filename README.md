@@ -25,8 +25,7 @@
 ## 이용한 도구
 
 ### <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/> <img src="./src/assets/craco.png" width="50px"/> <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
-<img src="https://img.shields.io/badge/electron-47848F?style=for-the-badge&logo=electron&logoColor=white"/>
-<img src="https://img.shields.io/badge/electronbuilder-FFFFFF?style=for-the-badge&logo=electronbuilder&logoColor=black"/>
+<img src="https://img.shields.io/badge/electron-47848F?style=for-the-badge&logo=electron&logoColor=white"/> <img src="https://img.shields.io/badge/electronbuilder-FFFFFF?style=for-the-badge&logo=electronbuilder&logoColor=black"/>
 
 
  
