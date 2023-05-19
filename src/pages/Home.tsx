@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import LogCard from "../components/LogCard";
 import { LogCardElement } from "../types/LogCard";
-import fs from 'fs'
 
+const { ipcRenderer } = window.require("electron");
 
 const Home = () => {
 
@@ -12,26 +12,33 @@ const Home = () => {
 
   const fetchLogs = async () => {
 
-    fs.readFile(`${__dirname}/data.json`, "utf8", (err, data) => {
+    ipcRenderer.once('json', (e, data) => {
 
-      if (err) {
-        console.log(err)
-      } else {
+      setAllLogsData(JSON.parse(data).logs.sort((a: { id: number; }, b: { id: number; }) => b.id - a.id))
+      setRefresh(true)
+    })
 
-        setAllLogsData(JSON.parse(data).logs.sort((a, b) => b.id - a.id))
-        setRefresh(true)
-      }
-    });
+    ipcRenderer.send('return-json', "route")
+
+    ipcRenderer.once('from', (e, data) => {
+
+      setAllLogsData(JSON.parse(data).logs.sort((a: { id: number; }, b: { id: number; }) => b.id - a.id))
+      setRefresh(true)
+
+    })
 
   }
 
-
   useEffect(() => {
-
     fetchLogs()
 
-  }, [refresh])
+    return () => {
+      ipcRenderer.removeAllListeners('from')
+      ipcRenderer.removeAllListeners('return-json')
+      ipcRenderer.removeAllListeners('json')
+    }
 
+  }, [refresh])
 
   const divideColumn = (data: LogCardElement[]) => {
 

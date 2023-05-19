@@ -2,6 +2,7 @@ import React from 'react'
 import { HeaderElement } from '../types/header'
 import { useRouter } from '../hooks/useRouter'
 import logo from '../assets/log-place2.png';
+const { ipcRenderer } = window.require("electron");
 
 
 interface HeaderProps {
@@ -13,6 +14,7 @@ const Header: React.FC<HeaderProps> = ({ HeaderContent }) => {
 
   const HeaderMenuClickHandler = (path: string) => {
     // 헤더 메뉴 클릭시 이벤트 처리
+    ipcRenderer.send('route')
     routeTo(path)
   }
 

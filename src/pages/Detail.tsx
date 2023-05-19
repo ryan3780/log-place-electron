@@ -5,6 +5,8 @@ import { useRouter } from "../hooks/useRouter";
 import { LogCardElement } from "../types/LogCard";
 import fs from 'fs'
 
+const { ipcRenderer } = window.require("electron");
+
 const Detail = () => {
 
   const { id } = useParams();
@@ -40,12 +42,14 @@ const Detail = () => {
 
       const deletedJson = JSON.parse(data).logs.filter((log: { id: number; }) => log.id != id)
 
-      fs.writeFile(`${__dirname}/data.json`, JSON.stringify({ logs: deletedJson }), () => {
+      fs.writeFile(`${__dirname}/data.json`, JSON.stringify({ logs: deletedJson }), "utf-8", () => {
         if (err) {
           console.log(err)
         }
       })
+      ipcRenderer.send('return-json', { logs: deletedJson })
     })
+
   }
 
   const DeleteLog = () => {

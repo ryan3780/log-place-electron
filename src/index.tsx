@@ -17,6 +17,13 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+declare global {
+  interface Window {
+    ipcRenderer: any;
+  }
+}
+
 root.render(
   <ApolloProvider client={client}>
     <App />

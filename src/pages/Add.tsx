@@ -12,6 +12,7 @@ import { LogCardElement } from "../types/LogCard";
 import { useNavigate } from "react-router-dom";
 import nothing from '../assets/nothing.png'
 import fs from 'fs'
+const { ipcRenderer } = window.require("electron");
 
 
 interface ExifProps {
@@ -53,10 +54,9 @@ const Add = (edit: editProps) => {
 
   const addFile = async (oneLineComment: string) => {
 
-    fs.readFile(`${__dirname}/data.json`, function (err) {
+    fs.readFile(`${__dirname}/data.json`, "utf-8", function (err, data) {
 
-      const jsonFile = fs.readFileSync(`${__dirname}/data.json`, 'utf8');
-      const jsonData = JSON.parse(jsonFile);
+      const jsonData = JSON.parse(data)
 
       let logId = 1
 
@@ -81,15 +81,16 @@ const Add = (edit: editProps) => {
           console.log(err)
         }
       })
+      ipcRenderer.send('return-json', jsonData)
     })
+
   }
 
   const editFile = async (id: number, oneLineComment: string) => {
 
-    fs.readFile(`${__dirname}/data.json`, function (err) {
+    fs.readFile(`${__dirname}/data.json`, "utf-8", function (err, data) {
 
-      const jsonFile = fs.readFileSync(`${__dirname}/data.json`, 'utf8');
-      const jsonData = JSON.parse(jsonFile);
+      const jsonData = JSON.parse(data)
 
       const editLog = jsonData.logs.filter((item) => item.id != id)
 
@@ -109,7 +110,9 @@ const Add = (edit: editProps) => {
           console.log(err)
         }
       })
+      ipcRenderer.send('return-json', { logs: editLog })
     })
+
   }
 
 
@@ -138,6 +141,7 @@ const Add = (edit: editProps) => {
 
     if (edit.isEdit) {
       editFile(edit.info.id, logText.current.value).then(() => {
+        ipcRenderer.send('return-json')
         navigate("/")
       }).catch((err) => {
         console.log(err)
@@ -145,6 +149,7 @@ const Add = (edit: editProps) => {
 
     } else {
       addFile(logText.current.value).then(() => {
+        ipcRenderer.send('return-json')
         navigate("/")
       }).catch((err) => {
         console.log(err)
